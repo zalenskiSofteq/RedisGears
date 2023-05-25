@@ -7,12 +7,13 @@ Database triggers allow register a function that will be invoked whenever an eve
 
 For the full list of supported events please refer to [Redis Key Space notifications page](https://redis.io/docs/manual/keyspace-notifications/#events-generated-by-different-commands)
 
-To register a database trigger we need to use the `redis.registerTrigger` API when loading our library. The following example shows how to register a database trigger that will add a last update field when ever a hash key is changed:
+To register a database trigger we need to use the `redis.registerKeySpaceTrigger` API when loading our library. The following example shows how to register a database trigger that will add a last update field when ever a hash key is changed:
 
 ```js
 #!js api_version=1.0 name=lib
 
-redis.registerTrigger("consumer", "", function(client, data){
+redis.registerKeySpaceTrigger
+("consumer", "", function(client, data){
     if (client.call("type", data.key) != "hash") {
         // key is not a has, do not touch it.
         return;
@@ -119,7 +120,7 @@ For most use cases, `register_notifications_consumer` API is enough. But there a
 ```js
 #!js api_version=1.0 name=lib
 
-redis.registerTrigger("consumer", "", function(client, data){
+redis.registerKeySpaceTrigger("consumer", "", function(client, data){
     if (client.call("type", data.key) != "hash") {
         // key is not a has, do not touch it.
         return;
@@ -167,7 +168,7 @@ To fix the code and still get the expected results even on `multi`/`exec`. Redis
 ```js
 #!js api_version=1.0 name=lib
 
-redis.registerTrigger("consumer", "", function(client, data){
+redis.registerKeySpaceTrigger("consumer", "", function(client, data){
     if (data.name !== undefined) {
         client.call('incr', `name_${data.name}`);
     }
