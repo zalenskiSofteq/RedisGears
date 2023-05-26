@@ -158,7 +158,7 @@ As long as the primary shard is up and running we guarantee exactly once propert
 
 ## Upgrades
 
-When upgrading the consumer code (using the `UPGRADE` option of [`TFUNCTION LOAD`](commands.md#tfunction-load) command) the following consumer parameters can be updated:
+When upgrading the consumer code (using the `REPLACE` option of [`TFUNCTION LOAD`](commands.md#tfunction-load) command) the following consumer parameters can be updated:
 
 * Window
 * Trimming
