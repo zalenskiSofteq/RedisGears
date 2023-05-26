@@ -97,7 +97,7 @@ Information about the requested libraries.
 Invoke a function.
 
 ```
-RFCALL <library name> <function name> <number of keys> [<key1> ... <keyn>] [<arg1> ... <argn>]
+TFCALL <library name> <function name> <number of keys> [<key1> ... <keyn>] [<arg1> ... <argn>]
 ```
 
 _Arguments_
